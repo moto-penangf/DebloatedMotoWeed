@@ -40,6 +40,7 @@ smount "system_a.img"
 ./scripts/modify_configs/system.sh $MNT_DIR
 ./scripts/signature_spoof/signature_spoof.sh $MNT_DIR
 ./scripts/modify_configs/props.sh $MNT_DIR
+./scripts/microg/setup_microg.sh $MNT_DIR system
 
 sudo umount ${MNT_DIR}
 echo "[STAGE 2] system_a.img image unmounted"
@@ -48,6 +49,7 @@ echo "[STAGE 2] system_a.img image unmounted"
 smount "product_a.img"
 
 ./scripts/remove_bloatware/product.sh $MNT_DIR
+./scripts/microg/setup_microg.sh $MNT_DIR product
 
 sudo umount ${MNT_DIR}
 echo "[STAGE 2] product_a.img image unmounted"
@@ -57,6 +59,7 @@ smount "system_ext_a.img"
 
 ./scripts/modify_configs/system_ext.sh $MNT_DIR
 ./scripts/remove_bloatware/system_ext.sh $MNT_DIR
+./scripts/microg/setup_microg.sh $MNT_DIR system_ext
 
 sudo umount ${MNT_DIR}
 echo "[STAGE 2] system_ext_a.img image unmounted"
