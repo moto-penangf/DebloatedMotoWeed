@@ -74,4 +74,10 @@ set_permissions "${SYSTEM_EXT_DIR}/etc/default-permissions/default-permissions-G
 sudo cp "scripts/microg/files/etc/microg.xml" "${SYSTEM_EXT_DIR}/etc/microg.xml"
 set_permissions "${SYSTEM_EXT_DIR}/etc/microg.xml"
 
+sudo rm -rf "{SYSTEM_EXT_DIR}/priv-app/MtkSettingsProvider"
+sudo cp -R "scrips/microg/files/MtkSettingsProvider" "{SYSTEM_EXT_DIR}/priv-app/"
+sudo chown -R 0:0 "{SYSTEM_EXT_DIR}/priv-app/MtkSettingsProvider"
+sudo chmod -R 0644 "{SYSTEM_EXT_DIR}/priv-app/MtkSettingsProvider"
+sudo chcon -R "u:object_r:system_file:s0" "{SYSTEM_EXT_DIR}/priv-app/MtkSettingsProvider"
+
 echo "[✅] Installation complete!"
